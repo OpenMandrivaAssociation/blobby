@@ -17,6 +17,7 @@ Source1: http://blobby.redio.de/wiki/images/logo.png
 License: GPL
 Group: Games/Arcade
 Url: http://blobby.redio.de/
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: automake1.8
 BuildRequires: SDL-devel
 BuildRequires: GL-devel
