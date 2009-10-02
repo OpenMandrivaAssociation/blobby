@@ -3,9 +3,10 @@
 # tar cvjf blobby-$DATE.tar.bz2 blobby-$DATE
 
 %define name blobby
-%define version 0.6.a
-%define svndate 20061105
-%define release %mkrel 2.%{svndate}
+%define version 0.7.0
+%define svndate 20091002
+%define rel 1
+%define release %mkrel 0.%{svndate}.%{rel}
 %define distname %{name}-%{svndate}
 
 Summary: Blobby Volley arcade game
@@ -30,17 +31,16 @@ characters design.
 
 %prep
 %setup -q -n %{distname}
-chmod +x bootstrap
 
 %build
-./bootstrap
-%configure2_5x --bindir=%{_gamesbindir} --datadir=%{_gamesdatadir}
+cmake .
 %make
 
 %install
 rm -rf %{buildroot}
-%makeinstall bindir=%{buildroot}%{_gamesbindir} datadir=%{buildroot}%{_gamesdatadir}
-
+install -d %{buildroot}%{_gamesbindir} %{buildroot}%{_gamesdatadir}/%{name}/data
+install -m 755 src/%{name} src/%{name}-server %{buildroot}%{_gamesbindir}
+cp -a data/*.xml data/*.zip data/backgrounds data/gfx data/gf2x data/sounds %{buildroot}%{_gamesdatadir}/%{name}/data
 install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/icons/%{name}.png
 
 install -d %{buildroot}%{_datadir}/applications
@@ -63,7 +63,16 @@ rm -rf %{buildroot}
 %{_gamesbindir}/%{name}
 %{_gamesbindir}/%{name}-server
 %dir %{_gamesdatadir}/%{name}
-%{_gamesdatadir}/%{name}/*.xml
-%{_gamesdatadir}/%{name}/*.zip
+%dir %{_gamesdatadir}/%{name}/data
+%{_gamesdatadir}/%{name}/data/*.xml
+%{_gamesdatadir}/%{name}/data/*.zip
+%dir %{_gamesdatadir}/%{name}/data/backgrounds
+%{_gamesdatadir}/%{name}/data/backgrounds/*.bmp
+%dir %{_gamesdatadir}/%{name}/data/gfx
+%{_gamesdatadir}/%{name}/data/gfx/*.bmp
+%dir %{_gamesdatadir}/%{name}/data/gf2x
+%{_gamesdatadir}/%{name}/data/gf2x/*.bmp
+%dir %{_gamesdatadir}/%{name}/data/sounds
+%{_gamesdatadir}/%{name}/data/sounds/*.wav
 %{_datadir}/icons/%{name}.png
 %{_datadir}/applications/mandriva-%{name}.desktop
