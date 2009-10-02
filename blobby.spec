@@ -22,6 +22,7 @@ BuildRequires: automake1.8
 BuildRequires: SDL-devel
 BuildRequires: GL-devel
 BuildRequires: physfs-devel
+BuildRequires: boost-devel
 BuildRequires: zip
 BuildRequires: cmake
 BuildRoot: %{_tmppath}/%{name}-%{version}
