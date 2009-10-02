@@ -14,7 +14,7 @@ Version: %{version}
 Release: %{release}
 License: GPL
 Group: Games/Arcade
-Url: http://blobby.redio.de/
+Url: http://sourceforge.net/projects/blobby/
 Source0: %{distname}.tar.bz2
 Source1: http://blobby.redio.de/wiki/images/logo.png
 BuildRequires: automake1.8
