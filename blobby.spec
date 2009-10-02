@@ -67,5 +67,3 @@ rm -rf %{buildroot}
 %{_gamesdatadir}/%{name}/*.zip
 %{_datadir}/icons/%{name}.png
 %{_datadir}/applications/mandriva-%{name}.desktop
-
-
