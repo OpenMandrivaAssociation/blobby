@@ -39,7 +39,16 @@ cmake .
 %install
 rm -rf %{buildroot}
 install -d %{buildroot}%{_gamesbindir} %{buildroot}%{_gamesdatadir}/%{name}/data
-install -m 755 src/%{name} src/%{name}-server %{buildroot}%{_gamesbindir}
+for p in %{name} %{name}-server; do
+    install -m 755 src/$p %{buildroot}%{_gamesbindir}/$p.real
+    cat > %{buildroot}%{_gamesbindir}/$p <<EOF
+#!/bin/sh
+cd %{_gamesdatadir}/%{name}
+exec $p.real \$@
+EOF
+    chmod +x %{buildroot}%{_gamesbindir}/$p
+done
+
 cp -a data/*.xml data/*.zip data/backgrounds data/gfx data/gf2x data/sounds %{buildroot}%{_gamesdatadir}/%{name}/data
 install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/icons/%{name}.png
 
@@ -61,7 +70,9 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %{_gamesbindir}/%{name}
+%{_gamesbindir}/%{name}.real
 %{_gamesbindir}/%{name}-server
+%{_gamesbindir}/%{name}-server.real
 %dir %{_gamesdatadir}/%{name}
 %dir %{_gamesdatadir}/%{name}/data
 %{_gamesdatadir}/%{name}/data/*.xml
