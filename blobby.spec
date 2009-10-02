@@ -5,24 +5,24 @@
 %define name blobby
 %define version 0.6.a
 %define svndate 20061105
-%define release %mkrel 1.%{svndate}
+%define release %mkrel 2.%{svndate}
 %define distname %{name}-%{svndate}
 
 Summary: Blobby Volley arcade game
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{distname}.tar.bz2
-Source1: http://blobby.redio.de/wiki/images/logo.png
 License: GPL
 Group: Games/Arcade
 Url: http://blobby.redio.de/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Source0: %{distname}.tar.bz2
+Source1: http://blobby.redio.de/wiki/images/logo.png
 BuildRequires: automake1.8
 BuildRequires: SDL-devel
 BuildRequires: GL-devel
 BuildRequires: physfs-devel
 BuildRequires: zip
+BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 Blobby Volley is an arcade game with a simple gameplay and funny
