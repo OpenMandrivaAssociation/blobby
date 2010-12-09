@@ -5,7 +5,7 @@
 %define name blobby
 %define version 0.7.0
 %define svndate 20091002
-%define rel 1
+%define rel 2
 %define release %mkrel 0.%{svndate}.%{rel}
 %define distname %{name}-%{svndate}
 
