@@ -1,22 +1,16 @@
-# DATE=$(date +%Y%m%d)
-# svn export https://svn.sourceforge.net/svnroot/blobby/trunk blobby-$DATE
-# tar cvjf blobby-$DATE.tar.bz2 blobby-$DATE
-
 %define name blobby
-%define version 0.7.0
-%define svndate 20091002
-%define rel 2
-%define release %mkrel 0.%{svndate}.%{rel}
-%define distname %{name}-%{svndate}
+%define version 0.9b
+%define release %mkrel 1
+%define distname blobby2-linux-%{version}
 
 Summary: Blobby Volley arcade game
 Name: %{name}
 Version: %{version}
 Release: %{release}
-License: GPL
+License: GPLv2+
 Group: Games/Arcade
 Url: http://sourceforge.net/projects/blobby/
-Source0: %{distname}.tar.bz2
+Source0: http://prdownloads.sourceforge.net/%{name}/%{distname}.tar.gz
 Source1: http://blobby.redio.de/wiki/images/logo.png
 BuildRequires: automake1.8
 BuildRequires: SDL-devel
@@ -32,7 +26,7 @@ Blobby Volley is an arcade game with a simple gameplay and funny
 characters design.
 
 %prep
-%setup -q -n %{distname}
+%setup -q -n blobby-beta-%{version}
 
 %build
 cmake .
@@ -40,6 +34,7 @@ cmake .
 
 %install
 rm -rf %{buildroot}
+
 install -d %{buildroot}%{_gamesbindir} %{buildroot}%{_gamesdatadir}/%{name}/data
 for p in %{name} %{name}-server; do
     install -m 755 src/$p %{buildroot}%{_gamesbindir}/$p.real
@@ -59,11 +54,11 @@ cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=Blobby Volley
 Comment=Blobby Volley arcade game
-Exec=soundwrapper %_gamesbindir/%{name}
+Exec=soundwrapper %{_gamesbindir}/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=Game;ArcadeGame;X-MandrivaLinux-MoreApplications-Games-Arcade;
+Categories=Game;ArcadeGame;
 EOF
 
 %clean
@@ -89,3 +84,5 @@ rm -rf %{buildroot}
 %{_gamesdatadir}/%{name}/data/sounds/*.wav
 %{_datadir}/icons/%{name}.png
 %{_datadir}/applications/mandriva-%{name}.desktop
+
+
