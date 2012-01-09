@@ -1,25 +1,22 @@
-%define name blobby
-%define version 0.9b
-%define release %mkrel 1
 %define distname blobby2-linux-%{version}
 
-Summary: Blobby Volley arcade game
-Name: %{name}
-Version: %{version}
-Release: %{release}
-License: GPLv2+
-Group: Games/Arcade
-Url: http://sourceforge.net/projects/blobby/
-Source0: http://prdownloads.sourceforge.net/%{name}/%{distname}.tar.gz
-Source1: http://blobby.redio.de/wiki/images/logo.png
-BuildRequires: automake1.8
-BuildRequires: SDL-devel
-BuildRequires: GL-devel
-BuildRequires: physfs-devel
-BuildRequires: boost-devel
-BuildRequires: zip
-BuildRequires: cmake
-BuildRoot: %{_tmppath}/%{name}-%{version}
+Name:		blobby
+Version:	0.9c
+Release:	%mkrel 1
+Summary:	Blobby Volley arcade game
+License:	GPLv2+
+Group:		Games/Arcade
+Url:		http://sourceforge.net/projects/blobby/
+Source0:	http://prdownloads.sourceforge.net/%{name}/%{distname}.tar.gz
+Source1:	http://blobby.redio.de/wiki/images/logo.png
+BuildRequires:	automake1.8
+BuildRequires:	SDL-devel
+BuildRequires:	GL-devel
+BuildRequires:	physfs-devel
+BuildRequires:	boost-devel
+BuildRequires:	zip
+BuildRequires:	cmake
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Blobby Volley is an arcade game with a simple gameplay and funny
@@ -77,12 +74,11 @@ rm -rf %{buildroot}
 %dir %{_gamesdatadir}/%{name}/data/backgrounds
 %{_gamesdatadir}/%{name}/data/backgrounds/*.bmp
 %dir %{_gamesdatadir}/%{name}/data/gfx
-%{_gamesdatadir}/%{name}/data/gfx/*.bmp
+%{_gamesdatadir}/%{name}/data/gfx/*
 %dir %{_gamesdatadir}/%{name}/data/gf2x
-%{_gamesdatadir}/%{name}/data/gf2x/*.bmp
+%{_gamesdatadir}/%{name}/data/gf2x/*
 %dir %{_gamesdatadir}/%{name}/data/sounds
 %{_gamesdatadir}/%{name}/data/sounds/*.wav
 %{_datadir}/icons/%{name}.png
 %{_datadir}/applications/mandriva-%{name}.desktop
-
 
