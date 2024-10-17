@@ -6,7 +6,7 @@ Release:	%mkrel 1
 Summary:	Blobby Volley arcade game
 License:	GPLv2+
 Group:		Games/Arcade
-Url:		http://sourceforge.net/projects/blobby/
+Url:		https://sourceforge.net/projects/blobby/
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{distname}.tar.gz
 Source1:	http://blobby.redio.de/wiki/images/logo.png
 BuildRequires:	automake1.8
