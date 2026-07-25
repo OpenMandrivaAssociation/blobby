@@ -2,7 +2,7 @@
 
 Name:		blobby
 Version:	0.9c
-Release:	%mkrel 1
+Release:	2
 Summary:	Blobby Volley arcade game
 License:	GPLv2+
 Group:		Games/Arcade
